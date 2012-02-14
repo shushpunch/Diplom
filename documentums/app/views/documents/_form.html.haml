@@ -1,0 +1,81 @@
+= form_for(@document) do |f|
+  - if @document.errors.any?
+    .msg.error
+      %h2= "При сохранении произошли ошибки"
+      %ul
+        - @document.errors.full_messages.each do |msg|
+          %li= msg
+  .film
+    .col
+      .field
+        = f.label :number, "Номер"
+        = f.text_field :number
+        = f.label :cdate
+        = f.date_select :cdate
+      .field
+        = f.label :name, "Тип приказа"
+        = f.select :type_id, Type.all.map{|t| [t.name,t.id]}
+        
+      .clear
+  .film
+    .col
+    #reason_en_form
+      .field
+        = f.label :user_name, "Имя"
+        = f.text_field :user_name
+        = f.label :user_surname, "Фамилия"
+        = f.text_field :user_surname
+        = f.label :user_middlename, "Отчество"
+        = f.text_field :user_middlename
+      .field
+        = f.label :name, "Научная специальность"
+        = f.select :branch_id, Branch.all.map{|b| [b.name,b.id]}
+      .field
+        = f.label :body, "Научный руководитель"
+        = f.text_field :body
+      .field
+        = f.label :chair_id, "Кафедра"
+        = f.select :chair_id, Chair.all.map{|c| [c.name,c.id]}
+      .field
+        = f.label :sdate, "Дата зачисления хлопцэв"
+        = f.date_select :sdate
+  
+    #reason_trans_form
+      .field
+        = f.label :body, "Форма обучения"
+        = f.text_field :body
+  
+    #reason_chan_form
+      .field
+        = f.label :name, "Научная специальность"
+        = f.select :branch_id, Branch.all.map{|b| [b.name,b.id]}
+      .field
+        = f.label :chair_id, "Кафедра"
+        = f.select :chair_id, Chair.all.map{|c| [c.name,c.id]}
+      .field
+        = f.label :body, "Факультет"
+        = f.text_field :body
+    
+    #reason_del_form
+      .field
+        = f.label :reason_tokens, "Основание"
+        = f.select :reason_id, Reason.all.map{|r| [r.name,r.id]},{}, :onclick => "document.getElementById('document_reas').value = getSelectedText(this.id);"
+      .field
+        = f.text_field :reas
+      .field
+        = f.label :sdate
+        %br
+        = f.date_select :sdate
+      .field
+        = f.label :comment
+        = f.text_area :comment
+      
+    .field
+      = f.label :user_tokens, "Пасаны"
+      = f.text_field :user_tokens, "data-pre"=>@document.users.map(&:attributes).to_json
+    .clear
+  
+  
+  
+  .actions
+    = f.submit 'Сохранить'

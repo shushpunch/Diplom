@@ -1,0 +1,8 @@
+#menu.box
+  %ul.box
+    %li{:id=>controller_name=='documents' ? "menu-active" : nil}=link_to content_tag(:span,"Приказы"),documents_path
+    %li{:id=>controller_name=='types' ? "menu-active" : nil}=link_to content_tag(:span,"Типы"),types_path
+    %li{:id=>controller_name=='reasons' ? "menu-active" : nil}=link_to content_tag(:span,"Основания"),reasons_path
+    %li{:id=>controller_name=='users' ? "menu-active" : nil}=link_to content_tag(:span,"Пользователи"),users_path
+    %li{:id=>controller_name=='chairs' ? "menu-active" : nil}=link_to content_tag(:span,"Кафедры"),chairs_path
+    %li{:id=>controller_name=='branches' ? "menu-active" : nil}=link_to content_tag(:span,"Специальности"),branches_path

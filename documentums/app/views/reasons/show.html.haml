@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Наименование:
+  = @reason.name
+
+= link_to 'Редактировать', edit_reason_path(@reason)
+\|
+= link_to 'Назад', reasons_path

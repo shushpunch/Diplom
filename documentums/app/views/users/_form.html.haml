@@ -1,0 +1,34 @@
+= form_for @user do |f|
+  -if @user.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@user.errors.count, "error")} prohibited this user from being saved:"
+      %ul
+        - @user.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :login
+    = f.text_field :login
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :surname
+    = f.text_field :surname
+  .field
+    = f.label :middlename
+    = f.text_field :middlename
+  .field
+    = f.label :email
+    = f.text_field :email
+  .field
+    = f.label :date_birth
+    = f.date_select :date_birth
+  .field
+    = f.label :state
+    = f.text_field :state
+  .field
+    = f.label :phone
+    = f.number_field :phone
+  .actions
+    = f.submit 'Save'

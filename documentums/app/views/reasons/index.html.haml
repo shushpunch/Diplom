@@ -1,0 +1,19 @@
+%h1 Основания приказов
+
+%table
+  %tr
+    %th Наименование
+    %th
+    %th
+    %th
+
+  - @reasons.each do |reason|
+    %tr
+      %td= reason.name
+      %td= link_to 'Показать', reason
+      %td= link_to 'Редактировать', edit_reason_path(reason)
+      %td= link_to 'Удалить', reason, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'Новое основание', new_reason_path

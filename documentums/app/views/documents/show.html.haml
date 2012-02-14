@@ -1,0 +1,17 @@
+%h1=@doc_type
+.film
+  .col
+    %dl
+      - if @doc_type == type_enroll
+        = render 'en_show'
+      -elsif @doc_type == type_transfer
+        = render 'transfer_show'
+      -elsif @doc_type == type_change
+        = render 'chan_show'
+      -elsif @doc_type == type_delete
+        = render 'del_show'
+        
+  .clear
+  
+= link_to "Назад", documents_path
+

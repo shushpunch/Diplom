@@ -1,0 +1,45 @@
+%tbody
+  - @type.each do |type|
+    %tr
+      %td= link_to type.name, type_documents_path(type)
+      %br
+          
+          
+          
+
+%h1 Документы
+%table
+  %thead
+    %tr
+      %th №
+      %th Номер
+      %th Тип
+      %th Дата создания
+      %th Состояние
+      %th Аспиранты
+      %th Просмотреть
+  %tbody
+    -i=0
+    - @documents.each do |document|
+      %tr
+        %td= i+=1
+        %td= link_to document.number, document_path(document)
+        %td= document.type.name
+        %td= document.cdate
+        %td= document.dstate
+        
+        %td
+          -document.users.each do |users|
+            = users.surname + ' ' + users.name
+            %br
+        %td
+          = link_to "HTML", document_path(document)
+          %br
+          = link_to "PDF", document_path(document,:format => :pdf)
+          %br
+          = link_to 'Редактировать', edit_document_path(document)
+          %br
+          = link_to 'Destroy', document, :confirm => 'Are you sure?', :method => :delete
+       
+.actions
+  = link_to 'Новый документ', new_document_path, :class=>"btn primary"

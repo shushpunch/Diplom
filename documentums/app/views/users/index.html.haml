@@ -1,0 +1,23 @@
+%h1 Аспиранты
+
+%table
+  %tr
+    %th Имя
+    %th Фамилия
+    %th Отчество
+    %th
+    %th
+    %th
+
+  - @users.each do |user|
+    %tr
+      %td= user.name
+      %td= user.surname
+      %td= user.middlename
+      %td= link_to 'Показать', user
+      %td= link_to 'Редактировать', edit_user_path(user)
+      %td= link_to 'Удалить', user, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'Новый аспирант', new_user_path

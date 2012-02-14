@@ -1,0 +1,21 @@
+%h1 Listing chairs
+
+%table
+  %tr
+    %th Name
+    %th Number
+    %th
+    %th
+    %th
+
+  - @chairs.each do |chair|
+    %tr
+      %td= chair.name
+      %td= chair.number
+      %td= link_to 'Show', chair
+      %td= link_to 'Edit', edit_chair_path(chair)
+      %td= link_to 'Destroy', chair, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Chair', new_chair_path

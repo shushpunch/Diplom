@@ -1,0 +1,33 @@
+%p#notice= notice
+
+%p
+  %b Login:
+  = @user.login
+%p
+  %b Name:
+  = @user.name
+%p
+  %b Surname:
+  = @user.surname
+%p
+  %b Middlename:
+  = @user.middlename
+%p
+  %b Email:
+  = @user.email
+%p
+  %b Date birth:
+  = @user.date_birth
+%p
+  %b State:
+  = @user.state
+%p
+  %b Phone:
+  = @user.phone
+  %dd
+    -@user.documents.each do |documents|
+      =link_to documents.type.name + ',', documents
+
+= link_to 'Edit', edit_user_path(@user)
+\|
+= link_to 'Back', users_path

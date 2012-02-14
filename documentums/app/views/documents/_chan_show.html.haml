@@ -1,0 +1,14 @@
+#document_wrapper
+  #document_header
+    Федеральное государственное бюджетное
+    образовательное учреждение высшего профессионального образования 
+    %br
+    московский государственный индустриальный университет
+    %br
+    (ФГБОУ ВПО МГИУ)
+    #document_name
+      = '№ ' + @doc_number
+    -@document.each do |document|
+      %br
+      =document.type.name
+      %br

@@ -1,0 +1,19 @@
+.field
+  = f.label :user_name, "Имя"
+  = f.text_field :user_name
+  = f.label :user_surname, "Фамилия"
+  = f.text_field :user_surname
+  = f.label :user_middlename, "Отчество"
+  = f.text_field :user_middlename
+.field
+  = f.label :name, "Научная специальность"
+  = f.select :branch_id, Branch.all.map{|b| [b.name,b.id]}
+.field
+  = f.label :body, "Научный руководитель"
+  = f.text_field :body
+.field
+  = f.label :chair_id, "Кафедра"
+  = f.select :chair_id, Chair.all.map{|c| [c.name,c.id]}
+.field
+  = f.label :sdate, "Дата зачисления хлопцэв"
+  = f.date_select :sdate
